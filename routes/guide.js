@@ -38,28 +38,28 @@ router.route('/:id').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
+// UPDATE - Specific Guide data by ID
+router.route('/update/:id').post((req, res) => {
+    Guide.findById(req.params.id)
+        .then(g => {
+            g.fisrtName = req.body.fisrtName;
+            g.lastName = req.body.lastName;
+            g.nickName = req.body.nickName;
+            g.age = req.body.age;
+            g.birthday = req.body.birthday;
+            g.email = req.body.email;
+            
+            g.save()
+                .then(() =>res.json(`Guide Updated!`))
+                .catch(err => res.status(400).json('Error: ' + err))
+        })
+        .catch(err => res.status(400).json('Error: ' + err))
+});
+
 // DELETE - Specific Guide by ID
 router.route('/:id').delete((req, res) => {
     Guide.findByIdAndDelete(req.params.id)
         .then(() => res.json(`Guide ${req.params.id} deleted.`))
-        .catch(err => res.status(400).json('Error: ' + err))
-});
-
-// UPDATE - Specific Guide data by ID
-router.route('/update/:id').post((req, res) => {
-    Guide.findById(req.params.id)
-        .then(guide => {
-            guide.fisrtName = req.body.fisrtName;
-            guide.lastName = req.body.lastName;
-            guide.nickName = req.body.nickName;
-            guide.age = req.body.age;
-            guide.birthday = req.body.birthday;
-            guide.email = req.body.email;
-            
-            Guide.save()
-                .then(() =>res.json(`Guide ${req.params.id} Updated!`))
-                .catch(err => res.status(400).json('Error: ' + err))
-        })
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
