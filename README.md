@@ -9,7 +9,7 @@ Los modelos son constructores sofisticados compilados a partir de definiciones *
 | firstName | String | true | *-* |
 | lastName | String | true | *-*|
 | nickName | String | false | *-*|
-| age | String | true | *-*|
+| age | Number | true | *-*|
 | birthday | Object | true | *Es un Objeto. Cada dato en el objeto es de tipo número y es requerido*|
 | email | String | true | *-*|
 
@@ -154,4 +154,53 @@ Los modelos son constructores sofisticados compilados a partir de definiciones *
 
 ```json
 "Guide 645ae59e0e996c2e625ed401 deleted."
+```
+
+### Drivers Model
+
+| Data | Type | Required | Description|
+| ------- | ------- | ------- | ------- |
+| name | String | true | *-* |
+| age | Number | true | *-*|
+| aviable | Boolean | false | *-*|
+| location | Object | true | *Es un Objeto. Cada dato en el objeto es de tipo número*|
+
+
+## Lista de Endpoints para el modelo Drivers
+
+#### URL request
+    https://dominio.com/drivers || http://localhost:5000/drivers
+
+| Método | Endpoint | Ejemplo  |
+| ------ | -------- | -------- |
+| GET    | ***/***  | https://dominio.com/drivers |
+|***Obtener todos los elementos de Drivers*** |
+
+**Response**
+
+```json
+
+```
+
+| Método | Endpoint | Ejemplo  |
+| ------ | -------- | -------- |
+| POST   | ***/add***  | https://dominio.com/drivers/add |
+|***Agrega/crear un nuevo elemento de Driver***|||
+
+**body**
+```json
+{
+    "name": "Mario Gonzales",
+    "age": 32,
+    "available": false,
+    "location": {
+        "latitude": 39.521887,
+        "longitude": -75.068753,
+    }
+}
+```
+
+**Response**
+```json
+"New Driver Added!"
 ```

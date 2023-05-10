@@ -19,9 +19,17 @@ connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });
 
-const guideRoutes = require('./routes/guide');
+//Use routes
+// const guideRoutes = require('./routes/guide');
+const driversRoutes = require('./routes/drivers');
+// const travelsRoutes = require('./routes/travels');
+// const passengersRoutes = require('./routes/passengers');
 
-app.use('/guides', guideRoutes);
+// Entry Endpoints
+// app.use('/guides', guideRoutes);
+app.use('/drivers', driversRoutes);
+// app.use('/travels', travelsRoutes);
+// app.use('/passengers', passengersRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
