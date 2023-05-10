@@ -1,0 +1,26 @@
+{
+  "name": "api-manage-fleet",
+  "version": "1.0.0",
+  "description": "API para administrar flota de pasajeros",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UdanPrg/api-manage-fleet.git"
+  },
+  "author": "Uriel Arana <udan1718@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UdanPrg/api-manage-fleet/issues"
+  },
+  "homepage": "https://github.com/UdanPrg/api-manage-fleet#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0"
+  }
+}
