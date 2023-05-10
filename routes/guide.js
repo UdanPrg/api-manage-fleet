@@ -50,7 +50,7 @@ router.route('/update/:id').post((req, res) => {
             g.email = req.body.email;
             
             g.save()
-                .then(() =>res.json(`Guide Updated!`))
+                .then(() =>res.json(`Guide ${req.params.id} Updated!`))
                 .catch(err => res.status(400).json('Error: ' + err))
         })
         .catch(err => res.status(400).json('Error: ' + err))
