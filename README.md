@@ -1,6 +1,7 @@
 ## Guide Model
 
 | Data | Type | Required | Description|
+| ------- | ------- | ------- | ------- |
 | firstName | String | true | *-* |
 | lastName | String | true | *-*|
 | nickName | String | false | *-*|
