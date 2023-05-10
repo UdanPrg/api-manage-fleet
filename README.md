@@ -147,7 +147,7 @@ Los modelos son constructores sofisticados compilados a partir de definiciones *
 
 | Método | Endpoint | Ejemplo  |
 | ------ | -------- | -------- |
-| POST   | ***/id***  | https://dominio.com/guides/645ae59e0e996c2e625ed401 |
+| DELETE | ***/id***  | https://dominio.com/guides/645ae59e0e996c2e625ed401 |
 |***Actualizar un elemento de Guides por el ID***|||
 
 **Response**
