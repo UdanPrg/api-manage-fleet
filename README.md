@@ -22,7 +22,7 @@ Los modelos son constructores sofisticados compilados a partir de definiciones *
 | Método | Endpoint | Ejemplo  |
 | ------ | -------- | -------- |
 | GET    | ***/***  | https://dominio.com/guides |
-|***Obtener todos los elementos de Guides***|||
+|***Obtener todos los elementos de Guides*** |
 
 **Response**
 
