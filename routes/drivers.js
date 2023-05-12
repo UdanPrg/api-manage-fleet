@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let Driver = require('../models/drivers.model');
+const dval = require('../functions/distanceValidator')
 
 // POST - New one Driver data
 router.route('/add').post((req, res) => {
@@ -24,6 +25,39 @@ router.route('/add').post((req, res) => {
 router.route('/').get((req, res)=>{
     Driver.find()
         .then(drivers => res.json(drivers))
+        .catch(err => res.status(400).json('Error: ' + err))
+})
+
+// GET - All Drivers aviable
+router.route('/available').get((req, res)=>{
+    Driver.find({available: true})
+        .then(drivers => res.json(drivers))
+        .catch(err => res.status(400).json('Error: ' + err))
+})
+
+// GET - All Drivers available within a 3km radius
+router.route('/within-radius').post((req, res)=>{
+    let latitude = req.body.location.latitude;
+    let longitude = req.body.location.longitude;
+
+    Driver.find()
+        .then(drivers => 
+            res.send(
+                drivers.filter(
+                    item => dval.distanceValidator(
+                        {
+                            latitud: item.location.latitude,
+                            longitud: item.location.longitude
+                        },
+                        {
+                            latitud: latitude,
+                            longitud: longitude
+                        }
+                        ).validation === true
+                )
+                
+            )
+        )
         .catch(err => res.status(400).json('Error: ' + err))
 })
 

@@ -1,4 +1,4 @@
-export default function calcularDistancia(coord1, coord2) {
+function distanceValidator(coord1, coord2) {
     const radioTierra = 6371; // Radio de la Tierra en kilómetros
 
     const latitud1 = convertirARadianes(coord1.latitud);
@@ -14,11 +14,14 @@ export default function calcularDistancia(coord1, coord2) {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     const distancia = radioTierra * c;
-    console.log(`La distancia entre las coordenadas es de ${distancia.toFixed(2)} kilómetros.`);
+    const cuantaDistancia = `La distancia entre las ubicaciones en este momento es de ${distancia.toFixed(2)} kilómetros.`;
 
     let validation = distancia <= 3;
 
-    return validation;
+    return {
+        validation,
+        cuantaDistancia
+    };
 }
 
 function convertirARadianes(grados) {
@@ -27,3 +30,6 @@ function convertirARadianes(grados) {
 
 // calcularDistancia({ latitud: 39.521887, longitud: -75.068753 }, { latitud: 39.52034515793049, longitud: -75.03441081638398 });
 
+module.exports = {
+    "distanceValidator": distanceValidator
+};
