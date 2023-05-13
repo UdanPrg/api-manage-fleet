@@ -20,13 +20,12 @@ connection.once('open', () => {
 });
 
 //Use routes
-// const guideRoutes = require('./routes/guide');
+
 const driversRoutes = require('./routes/drivers');
 // const travelsRoutes = require('./routes/travels');
 // const passengersRoutes = require('./routes/passengers');
 
 // Entry Endpoints
-// app.use('/guides', guideRoutes);
 app.use('/drivers', driversRoutes);
 // app.use('/travels', travelsRoutes);
 // app.use('/passengers', passengersRoutes);
