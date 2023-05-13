@@ -3,3 +3,5 @@
 
 # files
 /.env
+/models/guide.model.js
+/routes/guide.js
