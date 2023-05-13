@@ -1,14 +1,14 @@
 const router = require('express').Router();
-let Guide = require('../models/passengers.model');
+let Passenger = require('../models/passengers.model');
 
-// GET - All data in Guides
+// GET - All data in Passengers
 router.route('/').get((req, res)=>{
-    Guide.find()
-        .then(guides => res.json(guides))
+    Passenger.find()
+        .then(passengers => res.json(passengers))
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
-// POST - New one Guide data
+// POST - New one Passenger data
 router.route('/add').post((req, res) => {
     const fisrtName = req.body.fisrtName;
     const lastName = req.body.lastName;
@@ -17,7 +17,7 @@ router.route('/add').post((req, res) => {
     const birthday = req.body.birthday;
     const email = req.body.email;
 
-    const newGuide = new Guide({
+    const newPassenger = new Passenger({
         fisrtName,
         lastName,
         nickName,
@@ -26,40 +26,40 @@ router.route('/add').post((req, res) => {
         email
     });
 
-    newGuide.save()
-        .then(() => res.json('New Guide Added!'))
+    newPassenger.save()
+        .then(() => res.json('New Passenger Added!'))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
-// GET - Specific Guide data by ID
+// GET - Specific Passenger data by ID
 router.route('/:id').get((req, res) => {
-    Guide.findById(req.params.id)
-        .then(guide => res.json(guide))
+    Passenger.findById(req.params.id)
+        .then(passenger => res.json(passenger))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
-// UPDATE - Specific Guide data by ID
+// UPDATE - Specific Passenger data by ID
 router.route('/update/:id').post((req, res) => {
-    Guide.findById(req.params.id)
-        .then(g => {
-            g.fisrtName = req.body.fisrtName;
-            g.lastName = req.body.lastName;
-            g.nickName = req.body.nickName;
-            g.age = req.body.age;
-            g.birthday = req.body.birthday;
-            g.email = req.body.email;
+    Passenger.findById(req.params.id)
+        .then(p => {
+            p.fisrtName = req.body.fisrtName;
+            p.lastName = req.body.lastName;
+            p.nickName = req.body.nickName;
+            p.age = req.body.age;
+            p.birthday = req.body.birthday;
+            p.email = req.body.email;
             
-            g.save()
-                .then(() =>res.json(`Guide ${req.params.id} Updated!`))
+            p.save()
+                .then(() =>res.json(`Passenger ${req.params.id} Updated!`))
                 .catch(err => res.status(400).json('Error: ' + err))
         })
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
-// DELETE - Specific Guide by ID
+// DELETE - Specific Passenger by ID
 router.route('/:id').delete((req, res) => {
-    Guide.findByIdAndDelete(req.params.id)
-        .then(() => res.json(`Guide ${req.params.id} deleted.`))
+    Passenger.findByIdAndDelete(req.params.id)
+        .then(() => res.json(`Passenger ${req.params.id} deleted.`))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 

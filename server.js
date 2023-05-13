@@ -23,12 +23,12 @@ connection.once('open', () => {
 
 const driversRoutes = require('./routes/drivers');
 // const travelsRoutes = require('./routes/travels');
-// const passengersRoutes = require('./routes/passengers');
+const passengersRoutes = require('./routes/passengers');
 
 // Entry Endpoints
 app.use('/drivers', driversRoutes);
 // app.use('/travels', travelsRoutes);
-// app.use('/passengers', passengersRoutes);
+app.use('/passengers', passengersRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
