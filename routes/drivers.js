@@ -40,7 +40,11 @@ router.route('/within-radius').post((req, res)=>{
     let latitude = req.body.location.latitude;
     let longitude = req.body.location.longitude;
 
-    Driver.find()
+    // Validated all drivers
+    // Driver.find()
+
+    // Validated all drivers available: true
+    Driver.find({available: true})
         .then(drivers => 
             res.send(
                 drivers.filter(
