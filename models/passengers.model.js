@@ -2,30 +2,15 @@ const mongoose = require('mongoose');
 
 const Schemma = mongoose.Schema;
 
-const birthSchema = new Schemma({
-    day: {
-        type: Number,
-        required: true
-    },
-    month: {
-        type: Number,
-        required: true
-    },
-    year: {
-        type: Number,
-        required: true
-    }
-})
-const pasengerSchema = new Schemma({
-    fisrtName: {
+const locationPassengerSchema = new Schemma({
+    latitude: Number,
+    longitude: Number,
+});
+const passengerSchema = new Schemma({
+    name: {
         type: String,
         required: true
     },
-    lastName: {
-        type: String,
-        required: true
-    },
-    nickName: String,
     age: {
         type: Number,
         min: 18,
@@ -35,17 +20,11 @@ const pasengerSchema = new Schemma({
             message: props => `${props.value} Edad debe ser mayor o igual a 18`
         }
     },
-    birthday: birthSchema,
-    email: {
-        type: String,
-        minLength: 7,
-        required: true,
-        lowercase: true
-    },
+    location: locationPassengerSchema
 }, {
     timestamps: true,
 });
 
-const pasenger = mongoose.model('Pasenger', pasengerSchema);
+const passenger = mongoose.model('Passenger', passengerSchema);
 
-module.exports = pasenger;
+module.exports = passenger;

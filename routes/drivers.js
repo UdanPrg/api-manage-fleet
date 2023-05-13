@@ -28,6 +28,14 @@ router.route('/').get((req, res)=>{
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
+
+// GET - Specific Driver data by ID
+router.route('/:id').get((req, res) => {
+    Driver.findById(req.params.id)
+    .then(driver => res.json(driver))
+    .catch(err => res.status(400).json('Error: ' + err))
+});
+
 // GET - All Drivers aviable
 router.route('/available').get((req, res)=>{
     Driver.find({available: true})
@@ -35,7 +43,7 @@ router.route('/available').get((req, res)=>{
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
-// GET - All Drivers available within a 3km radius
+// POST/get - All Drivers available within a 3km radius
 router.route('/within-radius').post((req, res)=>{
     let latitude = req.body.location.latitude;
     let longitude = req.body.location.longitude;
@@ -64,13 +72,6 @@ router.route('/within-radius').post((req, res)=>{
         )
         .catch(err => res.status(400).json('Error: ' + err))
 })
-
-// GET - Specific Driver data by ID
-router.route('/:id').get((req, res) => {
-    Driver.findById(req.params.id)
-        .then(driver => res.json(driver))
-        .catch(err => res.status(400).json('Error: ' + err))
-});
 
 // UPDATE - Specific Driver data by ID
 router.route('/update/:id').post((req, res) => {

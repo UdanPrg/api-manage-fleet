@@ -14,7 +14,7 @@ function distanceValidator(coord1, coord2) {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     const distancia = radioTierra * c;
-    const cuantaDistancia = `La distancia entre las ubicaciones en este momento es de ${distancia.toFixed(2)} kilómetros.`;
+    const cuantaDistancia = distancia.toFixed(2);
 
     let validation = distancia <= 3;
 

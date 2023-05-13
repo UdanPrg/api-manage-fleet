@@ -204,3 +204,51 @@ Los modelos son constructores sofisticados compilados a partir de definiciones *
 ```json
 "New Driver Added!"
 ```
+
+### Passengers Model
+
+| Data | Type | Required | Description|
+| ------- | ------- | ------- | ------- |
+| name | String | true | *-* |
+| age | Number | true | *-*|
+| aviable | Boolean | false | *-*|
+| location | Object | true | *Es un Objeto. Cada dato en el objeto es de tipo número*|
+
+
+## Lista de Endpoints para el modelo passengers
+
+#### URL request
+    https://dominio.com/passengers || http://localhost:5000/passengers
+
+| Método | Endpoint | Ejemplo  |
+| ------ | -------- | -------- |
+| GET    | ***/***  | https://dominio.com/passengers |
+|***Obtener todos los elementos de Passengers*** |
+
+**Response**
+
+```json
+
+```
+
+| Método | Endpoint | Ejemplo  |
+| ------ | -------- | -------- |
+| POST   | ***/add***  | https://dominio.com/passengers/add |
+|***Agrega/crear un nuevo elemento de Passenger***|||
+
+**body**
+```json
+{
+    "name": "Mario Gonzales",
+    "age": 32,
+    "location": {
+        "latitude": 39.521887,
+        "longitude": -75.068753
+    }
+}
+```
+
+**Response**
+```json
+"New Passenger Added!"
+```
