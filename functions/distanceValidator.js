@@ -30,6 +30,4 @@ function convertirARadianes(grados) {
 
 // calcularDistancia({ latitud: 39.521887, longitud: -75.068753 }, { latitud: 39.52034515793049, longitud: -75.03441081638398 });
 
-module.exports = {
-    "distanceValidator": distanceValidator
-};
+module.exports = distanceValidator;

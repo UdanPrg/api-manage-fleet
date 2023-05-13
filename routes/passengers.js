@@ -1,7 +1,7 @@
 const router = require('express').Router();
 let Passenger = require('../models/passengers.model');
 let Driver = require('../models/drivers.model');
-const dval = require('../functions/distanceValidator')
+const distanceValidator = require('../functions/distanceValidator')
 
 // POST - New one Passenger data
 router.route('/add').post((req, res) => {
@@ -43,43 +43,42 @@ router.route('/near-drivers/:id').post((req, res)=>{
             Driver.find()
                 .then(drivers => 
                     res.send(
-                        drivers.filter(
-                            rudder => dval.distanceValidator(
-                                {
-                                    latitud: rudder.location.latitude,
-                                    longitud: rudder.location.longitude
-                                },
-                                {
-                                    latitud: passenger.location.latitude,
-                                    longitud: passenger.location.longitude
-                                }
-                            ).validation === true
-                        )
-                        // .sort(function(x,y){
-                        //     return dval.distanceValidator(
-                        //         {
-                        //             latitud: item.location.latitude,
-                        //             longitud: item.location.longitude
-                        //         },
-                        //         {
-                        //             latitud: latitude,
-                        //             longitud: longitude
-                        //         }
-                        //     ).cuantaDistancia - dval.distanceValidator(
-                        //         {
-                        //             latitud: item.location.latitude,
-                        //             longitud: item.location.longitude
-                        //         },
-                        //         {
-                        //             latitud: latitude,
-                        //             longitud: longitude
-                        //         }
-                        //     ).cuantaDistancia
-                            
-                        // })
+                    //     drivers.filter(
+                    //         rudder => dval.distanceValidator(
+                    //             {
+                    //                 latitud: rudder.location.latitude,
+                    //                 longitud: rudder.location.longitude
+                    //             },
+                    //             {
+                    //                 latitud: passenger.location.latitude,
+                    //                 longitud: passenger.location.longitude
+                    //             }
+                    //         ).cuantaDistancia <= 3
+                    //     )
+                    // )
+                    
+                        drivers.map(rudder => {
+                            console.log(rudder._doc)
+                            return {
+                                ...rudder._doc,
+                                distancia: distanceValidator(
+                                    {
+                                        latitud: rudder.location.latitude,
+                                        longitud: rudder.location.longitude
+                                    },
+                                    {
+                                        latitud: passenger.location.latitude,
+                                        longitud: passenger.location.longitude
+                                    }
+                                )
+                            };
+                        })
+                        .filter(rudder => rudder.distancia.validation === true)
+                        .sort((a, b) => a.distancia.cuantaDistancia - b.distancia.cuantaDistancia)
+                        .slice(0, 3)
                     )
                 )
-                .catch(err => err)
+                .catch(err => console.error(err))
         ) 
 
 
