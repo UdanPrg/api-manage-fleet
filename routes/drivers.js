@@ -65,7 +65,7 @@ router.route('/within-radius').post((req, res)=>{
                             latitud: latitude,
                             longitud: longitude
                         }
-                        ).validation === true
+                    ).validation === true
                 )
                 
             )

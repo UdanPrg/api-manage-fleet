@@ -55,6 +55,28 @@ router.route('/near-drivers/:id').post((req, res)=>{
                                 }
                             ).validation === true
                         )
+                        // .sort(function(x,y){
+                        //     return dval.distanceValidator(
+                        //         {
+                        //             latitud: item.location.latitude,
+                        //             longitud: item.location.longitude
+                        //         },
+                        //         {
+                        //             latitud: latitude,
+                        //             longitud: longitude
+                        //         }
+                        //     ).cuantaDistancia - dval.distanceValidator(
+                        //         {
+                        //             latitud: item.location.latitude,
+                        //             longitud: item.location.longitude
+                        //         },
+                        //         {
+                        //             latitud: latitude,
+                        //             longitud: longitude
+                        //         }
+                        //     ).cuantaDistancia
+                            
+                        // })
                     )
                 )
                 .catch(err => err)
