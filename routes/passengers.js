@@ -44,7 +44,7 @@ router.route('/near-drivers/:id').post((req, res)=>{
                 .then(drivers => 
                     res.send(
                         drivers.map(rudder => {
-                            console.log(rudder._doc)
+                            // console.log(rudder._doc)
                             return {
                                 ...rudder._doc,
                                 distancia: distanceValidator(
