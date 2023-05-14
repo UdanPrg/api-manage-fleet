@@ -43,20 +43,6 @@ router.route('/near-drivers/:id').post((req, res)=>{
             Driver.find()
                 .then(drivers => 
                     res.send(
-                    //     drivers.filter(
-                    //         rudder => dval.distanceValidator(
-                    //             {
-                    //                 latitud: rudder.location.latitude,
-                    //                 longitud: rudder.location.longitude
-                    //             },
-                    //             {
-                    //                 latitud: passenger.location.latitude,
-                    //                 longitud: passenger.location.longitude
-                    //             }
-                    //         ).cuantaDistancia <= 3
-                    //     )
-                    // )
-                    
                         drivers.map(rudder => {
                             console.log(rudder._doc)
                             return {
@@ -74,8 +60,9 @@ router.route('/near-drivers/:id').post((req, res)=>{
                             };
                         })
                         .filter(rudder => rudder.distancia.validation === true)
-                        .sort((a, b) => a.distancia.cuantaDistancia - b.distancia.cuantaDistancia)
+                        .sort((a, b) => a.distancia.cuantaDistancia - b.distancia.cuantaDistancia )
                         .slice(0, 3)
+                        
                     )
                 )
                 .catch(err => console.error(err))
