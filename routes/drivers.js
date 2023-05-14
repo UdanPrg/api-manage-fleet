@@ -1,6 +1,6 @@
 const router = require('express').Router();
 let Driver = require('../models/drivers.model');
-const dval = require('../functions/distanceValidator')
+const distanceValidator = require('../functions/distanceValidator')
 
 // POST - New one Driver data
 router.route('/add').post((req, res) => {
@@ -56,7 +56,7 @@ router.route('/within-radius').post((req, res)=>{
         .then(drivers => 
             res.send(
                 drivers.filter(
-                    item => dval.distanceValidator(
+                    item => distanceValidator(
                         {
                             latitud: item.location.latitude,
                             longitud: item.location.longitude
