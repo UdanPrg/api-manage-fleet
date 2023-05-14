@@ -1,65 +1,79 @@
 const router = require('express').Router();
-let Guide = require('../models/travels.model');
+let Travel = require('../models/travels.model');
 
-// GET - All data in Guides
+// POST - New one Travel data
+router.route('/new').post((req, res) => {
+    const passengerId = req.body.passengerId;
+    const driverId = req.body.driverId;
+    const startTripLocation = req.body.startTripLocation;
+    const endTripLocation = req.body.endTripLocation;
+    const active = req.body.active;
+    const status = req.body.status;
+
+    const newTravel = new Travel({
+        passengerId,
+        driverId,
+        startTripLocation,
+        endTripLocation,
+        active,
+        status
+    });
+
+    newTravel.save()
+        .then(() => res.json('New Travel Created!'))
+        .catch(err => res.status(400).json('Error: ' + err))
+});
+
+// GET - All data in Travels
 router.route('/').get((req, res)=>{
-    Guide.find()
-        .then(guides => res.json(guides))
+    Travel.find()
+        .then(travels => res.json(travels))
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
-// POST - New one Guide data
-router.route('/add').post((req, res) => {
-    const fisrtName = req.body.fisrtName;
-    const lastName = req.body.lastName;
-    const nickName = req.body.nickName;
-    const age = req.body.age;
-    const birthday = req.body.birthday;
-    const email = req.body.email;
-
-    const newGuide = new Guide({
-        fisrtName,
-        lastName,
-        nickName,
-        age,
-        birthday,
-        email
-    });
-
-    newGuide.save()
-        .then(() => res.json('New Guide Added!'))
-        .catch(err => res.status(400).json('Error: ' + err))
-});
-
-// GET - Specific Guide data by ID
+// GET - Specific Travel data by ID
 router.route('/:id').get((req, res) => {
-    Guide.findById(req.params.id)
-        .then(guide => res.json(guide))
+    Travel.findById(req.params.id)
+        .then(travel => res.json(travel))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
-// UPDATE - Specific Guide data by ID
+// UPDATE - Specific Travel data by ID
 router.route('/update/:id').post((req, res) => {
-    Guide.findById(req.params.id)
-        .then(g => {
-            g.fisrtName = req.body.fisrtName;
-            g.lastName = req.body.lastName;
-            g.nickName = req.body.nickName;
-            g.age = req.body.age;
-            g.birthday = req.body.birthday;
-            g.email = req.body.email;
+    Travel.findById(req.params.id)
+        .then(t => {
+            t.passengerId = req.body.passengerId;
+            t.driverId = req.body.driverId;
+            t.startTripLocation = req.body.startTripLocation;
+            t.endTripLocation = req.body.endTripLocation;
+            t.active = req.body.active;
+            t.status = req.body.status;
             
-            g.save()
-                .then(() =>res.json(`Guide ${req.params.id} Updated!`))
+            t.save()
+                .then(() =>res.json(`Travel ${req.params.id} Updated!`))
                 .catch(err => res.status(400).json('Error: ' + err))
         })
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
-// DELETE - Specific Guide by ID
+// UPDATE - Completed Specific Travel by ID
+router.route('/completed/:id').post((req, res) => {
+    Travel.findById(req.params.id)
+        .then(t => {
+            t.active = req.body.status == "Trip Completed" ? false : true;
+            t.status = req.body.status;
+            
+            t.save()
+                .then(() =>res.json(`Travel ${req.params.id} Updated!`))
+                .catch(err => res.status(400).json('Error: ' + err))
+        })
+        .catch(err => res.status(400).json('Error: ' + err))
+});
+
+// DELETE - Specific Travel by ID
 router.route('/:id').delete((req, res) => {
-    Guide.findByIdAndDelete(req.params.id)
-        .then(() => res.json(`Guide ${req.params.id} deleted.`))
+    Travel.findByIdAndDelete(req.params.id)
+        .then(() => res.json(`Travel ${req.params.id} deleted.`))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
