@@ -1,11 +1,14 @@
 # Iniciar Proyecto
 - Debera clonar el repositorio en el entorno local con el siguiente comando:
+
     git clone https://github.com/UdanPrg/api-manage-fleet.git
 
 - Luego entrar a la carpeta /api-manage-fleet y descargando todos los paquetes para el proeyecto ejecutando el siguiente comando:
+
     npm install
 
 - Al tener los paquetes instalados solo deberá ejecutar el siguiente comando desde la raíz del proyecto para iniciar el servidor y comenzar a realizar las peticiones:
+
     npm start
 
 *Mensaje de respuesta existosa al iniciar el servidor*
