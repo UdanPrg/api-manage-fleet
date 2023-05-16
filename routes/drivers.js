@@ -28,6 +28,12 @@ router.route('/').get((req, res)=>{
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
+// GET - All Drivers aviable
+router.route('/available').get((req, res)=>{
+    Driver.find({available: true})
+        .then(drivers => res.json(drivers))
+        .catch(err => res.status(400).json('Error: ' + err))
+})
 
 // GET - Specific Driver data by ID
 router.route('/:id').get((req, res) => {
@@ -36,12 +42,6 @@ router.route('/:id').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err))
 });
 
-// GET - All Drivers aviable
-router.route('/available').get((req, res)=>{
-    Driver.find({available: true})
-        .then(drivers => res.json(drivers))
-        .catch(err => res.status(400).json('Error: ' + err))
-})
 
 // POST/get - All Drivers available within a 3km radius
 router.route('/within-radius').post((req, res)=>{
