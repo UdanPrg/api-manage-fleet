@@ -17,10 +17,10 @@ Al tener los paquetes instalados solo deberá ejecutar el siguiente comando desd
     MongoDB database connection established successfully
 </code>
 
-Por medio de una herramienta de gestión de API's como Postman, podran encontrar en este documento las peticiones y la forma de realizar para las diversas funciones y/o data que se quiera obtener de la misma. También encontrarán un **archivo JSON**(***Fleet API.postman_collection.json***) que pueden importar a Postman para desplegar la collection ***Fleet API*** y realizar las pruebas de manera más rápida.
+Por medio de la herramienta de gestión de API's como Postman podrán realizar las pruebas de peticiones API. También encontrarán un **archivo JSON**(***Fleet API.postman_collection.json***) que pueden importar a Postman para desplegar la collection ***Fleet API*** y realizar las pruebas de manera más rápida.
 
 # REST API Fleet application
-Esta API tiene el objetivo de entregarle al usuario una herramienta para el manejo de flotas.
+Esta estructura de peticiones API, responde a la necesidad de una empresa de trasnportes, que desea tener una base de datos sobre los agentes involucrados en los servicios de trasnporte que realizan, tales como Conductores, Pasajeros y los Viajes mismos.
 
 Puede consultar la documentaciónd de **Fleet API** para realizar las pruebas en el siguiente link [https://documenter.getpostman.com/view/1874150/2s93kxaQgk](https://documenter.getpostman.com/view/1874150/2s93kxaQgk)
 
